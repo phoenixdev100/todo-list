@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Your Modern Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="landing-container">
+        <div class="glass-bg"></div>
+        <nav class="navbar glass-effect">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="logo-text">TaskMaster</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu">
+                <div class="nav-buttons">
+                    <button class="btn login-btn glass-btn" onclick="showLoginForm()">
+                        <i class="fas fa-user"></i>
+                        <span>Login</span>
+                    </button>
+                    <button class="btn signup-btn gradient-btn" onclick="showSignupForm()">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Sign Up</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="hero-section">
+            <div class="hero-content">
+                <h1 class="gradient-text">Organize Your Life</h1>
+                <p class="hero-subtitle">Transform your daily tasks into achievable goals</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Easy Task Management</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Track Progress</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Access Anywhere</span>
+                    </div>
+                </div>
+                <button class="btn get-started gradient-btn pulse" onclick="showSignupForm()">Get Started <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div class="hero-image">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/task-management-3428202-2902705.png" alt="Task Management">
+            </div>
+        </main>
+
+        <!-- Login Modal -->
+        <div class="modal" id="loginModal">
+            <div class="modal-content glass-effect">
+                <span class="close" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></span>
+                <div class="modal-header">
+                    <i class="fas fa-user-circle modal-icon"></i>
+                    <h2>Welcome Back</h2>
+                    <p>Enter your details to continue</p>
+                </div>
+                <form id="loginForm" onsubmit="return login(event)">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" required placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" required placeholder="Password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn submit-btn gradient-btn">Login <i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Signup Modal -->
+        <div class="modal" id="signupModal">
+            <div class="modal-content glass-effect">
+                <span class="close" onclick="closeModal('signupModal')"><i class="fas fa-times"></i></span>
+                <div class="modal-header">
+                    <i class="fas fa-user-plus modal-icon"></i>
+                    <h2>Create Account</h2>
+                    <p>Join us to start organizing your tasks</p>
+                </div>
+                <form id="signupForm" onsubmit="return signup(event)">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="signupName" required placeholder="Full Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="signupEmail" required placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="signupPassword" required placeholder="Password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn submit-btn gradient-btn">Sign Up <i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
