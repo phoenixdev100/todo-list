@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-container">
+        <nav class="navbar glass-effect">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <span class="logo-text">TaskMaster</span>
+            </div>
+            <div class="nav-menu">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userName">Welcome</span>
+                </div>
+                <button class="btn logout-btn glass-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="dashboard-content">
+            <div class="dashboard-header">
+                <h1>My Dashboard</h1>
+                <div class="task-stats">
+                    <div class="stat-card glass-effect">
+                        <i class="fas fa-tasks"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="totalTasks">0</span>
+                            <span class="stat-label">Total Tasks</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-effect">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="completedTasks">0</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                    </div>
+                    <div class="stat-card glass-effect">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="pendingTasks">0</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-task-section glass-effect">
+                <form id="addTaskForm" onsubmit="return addTask(event)">
+                    <div class="task-input-group">
+                        <div class="input-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                            <input type="text" id="taskInput" placeholder="What needs to be done?" required>
+                        </div>
+                        <div class="task-options">
+                            <select id="taskPriority" class="task-priority">
+                                <option value="low">Low Priority</option>
+                                <option value="medium">Medium Priority</option>
+                                <option value="high">High Priority</option>
+                            </select>
+                            <div class="date-input-wrapper">
+                                <input type="datetime-local" id="taskDueDate" class="task-due-date">
+                                <i class="fas fa-calendar-alt calendar-icon" onclick="openCalendar()"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn add-btn gradient-btn">
+                        <i class="fas fa-plus"></i> Add Task
+                    </button>
+                </form>
+            </div>
+
+            <div class="tasks-section glass-effect">
+                <div class="tasks-header">
+                    <h2>My Tasks</h2>
+                    <div class="view-options">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchTask" placeholder="Search tasks...">
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="btn filter-btn active" onclick="filterTasks('all')">All</button>
+                            <button class="btn filter-btn" onclick="filterTasks('active')">Active</button>
+                            <button class="btn filter-btn" onclick="filterTasks('completed')">Completed</button>
+                        </div>
+                        <select id="sortTasks" class="sort-select" onchange="sortTasks(this.value)">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="priority">Priority</option>
+                            <option value="dueDate">Due Date</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="taskList" class="task-list">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+
+                <div class="tasks-footer">
+                    <div class="task-count">
+                        <span id="taskCount">0</span> items left
+                    </div>
+                    <button class="btn gradient-btn clear-completed-btn" onclick="clearCompletedTasks()">Clear Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/tasks.js"></script>
+</body>
+</html>
